@@ -1,4 +1,5 @@
 import random
+import time
 def game(comp, you):
     if comp == 's':
         if you== 'w':
@@ -22,7 +23,7 @@ def game(comp, you):
         if you== 'w':
             return True
 comp = print(" computer's turn: Snake , water or gun ")
-you = input(" player's turn: snake water or gun ")
+you = input(" player's turn: snake water or gun")
 rand_no= random.randint(1,3)
 if rand_no == 1:
     comp = 's'

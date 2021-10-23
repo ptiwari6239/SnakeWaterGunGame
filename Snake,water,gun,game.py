@@ -1,5 +1,4 @@
 import random
-import time
 def game(comp, you):
     if comp == 's':
         if you== 'w':

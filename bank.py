@@ -20,8 +20,13 @@ def view():
     try:
 
      file=open(details,'r')               # checking if account already exit or not 
-     print(file.read())
+     info=file.read()
      file.close()
+     print('This is what we have found ')
+     print("\n")
+     print(info)
+     print('\n')
+     
 
     except Exception:
 
@@ -31,15 +36,16 @@ def newaccount():
     
     
      while True:
-       try:  
-         choice=input('   Press (Y/N) To Continue Making Account Or To Exit  ').upper()
+       
+         choice=input('Press (Y/N) To Continue Making Account Or To Exit  ').upper()
+         try:
 
-         if choice=='Y':
-            ac_no=input('  Select Your Account Number ')
+          if choice=='Y':
+            ac_no=int(input('Select Your Account Number '))
      
             try:
 
-             file = open(ac_no,'r')                                           # check if account already exit or not with given account number
+             file = open(str(ac_no),'r')                                           # check if account already exit or not with given account number
              file.close()
              print("Account Number Already Exit , Please Try Something Else ")
 
@@ -47,13 +53,14 @@ def newaccount():
              Name=input("Name ")
              Age=input('Age ')
              Amount=input('Amount ')
-             user=Customer(Name,Age,Amount,ac_no)
-         elif choice=="N":
-             print('         Thank   You      For    Baking     With    Us   ')
-             exit()
-         else:print('  INVALID  ENTRY ')
-       except Exception:
-           print(" Invalid  Entry ")     
+             user=Customer(Name,Age,Amount,str(ac_no))
+          elif choice=="N":
+             option()
+            #  print('         Thank   You      For    Baking     With    Us   ')
+             
+          else:print('  INVALID  ENTRY ')
+         except Exception:
+             print("Something is wrong please try again")    
     
 
 def remove():
@@ -106,9 +113,13 @@ def Withdraw():
 def option():
 
     while True:
-      try:  
+      try:
+        print("Press 1 to create new account     Press 2 to view details")
+        print('Press 3 to remove account         press 4 to deposite ')
+        print("Press 5 to withdraw               Press 6 to exit")
         
-        u=int(input(  " Press  1  To  Create   Account,  2  To  View   Details,  3  To  Remove   Account,  4  To  Deposite    Money,  5  To   Withdraw  and  6  to  exit :-  "))
+        
+        u=int(input())
 
         if u==1:
           newaccount()
@@ -124,15 +135,9 @@ def option():
         elif u==5:
             Withdraw()       
         else:print(' Invalid  Entry ')
-       except Exception:
-           print("  No  Entry ")     
+      except Exception:
+           print("  Wrong  Entry ")     
 
 
 print("             WELCOME     TO    OUR     BANK   ")
-option()    
- 
-
-
-
-
-     
+option()
